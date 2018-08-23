@@ -1,0 +1,3 @@
+author = m0x3mkx
+version = 0.1
+displayName = Arsenal
