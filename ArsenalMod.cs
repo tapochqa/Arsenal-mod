@@ -1,10 +1,10 @@
 using Terraria.ModLoader;
 
-namespace SimpleMod
+namespace ArsenalMod
 {
-	class SimpleMod : Mod
+	class ArsenalMod : Mod
 	{
-		public SimpleMod()
+		public ArsenalMod()
 		{
 			Properties = new ModProperties()
 			{
