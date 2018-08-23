@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace SimpleMod.Items
+namespace ArsenalMod.Items
 {
 	public class Woodgun : ModItem
 	{
