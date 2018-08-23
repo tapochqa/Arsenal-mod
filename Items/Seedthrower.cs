@@ -24,7 +24,7 @@ namespace SimpleMod.Items
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item18;
-			item.shoot = 10; 
+			item.shoot = 10;
 			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
 			item.autoReuse = true;
