@@ -1,1 +1,1 @@
-Arsenal-mod
+Мод для Terraria на оружее
