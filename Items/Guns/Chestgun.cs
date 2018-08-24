@@ -29,5 +29,9 @@ namespace ArsenalMod.Items.Guns
 			item.useAmmo = AmmoID.Bullet;
 			item.autoReuse = false;
 		}
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(0, 0);
+		}
     }
 }
