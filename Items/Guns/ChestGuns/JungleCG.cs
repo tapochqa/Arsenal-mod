@@ -2,13 +2,13 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace ArsenalMod.Items.Guns
+namespace ArsenalMod.Items.Guns.ChestGuns
 {
-    public class Chestgun : ModItem
+    public class JungleCG : ModItem
 	{
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chestgun");
+			DisplayName.SetDefault("Jungle chest gun");
 			Tooltip.SetDefault("Chestgun seriously???");
 		}
         public override void SetDefaults()
