@@ -15,8 +15,8 @@ namespace ArsenalMod.Items.Ammo
 		{
 			item.damage = 12;
 			item.ranged = true;
-			item.width = 8;
-			item.height = 8;
+			item.width = 14;
+			item.height = 16;
 			item.maxStack = 999;
 			item.consumable = true;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 1.5f;
