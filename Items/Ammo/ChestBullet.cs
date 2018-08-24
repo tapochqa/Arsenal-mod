@@ -24,7 +24,7 @@ namespace ArsenalMod.Items.Ammo
 			item.rare = 2;
 			item.shoot = mod.ProjectileType("ChestBullet");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 16f;                  //The speed of the projectile
-			item.ammo = AmmoID.Bullet;              //The ammo class this ammo belongs to.
+			item.ammo = item.type;              //The ammo class this ammo belongs to.
 		}
 
 		// Give each bullet consumed a 20% chance of granting the Wrath buff for 5 seconds

@@ -26,7 +26,7 @@ namespace ArsenalMod.Items.Guns
 			item.UseSound = SoundID.Item36;
 			item.shoot = mod.ProjectileType("ChestBullet");
 			item.shootSpeed = 16f;
-			item.useAmmo = AmmoID.Bullet;
+			item.useAmmo = mod.ItemType("ChestBullet");
 			item.autoReuse = false;
 		}
 		public override Vector2? HoldoutOffset()
