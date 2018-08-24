@@ -33,29 +33,6 @@ namespace ArsenalMod.Projectiles
 			aiType = ProjectileID.Bullet;           //Act exactly like default Bullet
 		}
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
-		{
-			//If collide with tile, reduce the penetrate.
-			//So the projectile can reflect at most 5 times
-			projectile.penetrate--;
-			if (projectile.penetrate <= 0)
-			{
-				projectile.Kill();
-			}
-			else
-			{
-				if (projectile.velocity.X != oldVelocity.X)
-				{
-					projectile.velocity.X = -oldVelocity.X;
-				}
-				if (projectile.velocity.Y != oldVelocity.Y)
-				{
-					projectile.velocity.Y = -oldVelocity.Y;
-				}
-				Main.PlaySound(SoundID.Item10, projectile.position);
-			}
-			return false;
-		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
