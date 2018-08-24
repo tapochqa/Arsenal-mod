@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace ArsenalMod.Items
+namespace ArsenalMod.Items.Guns
 {
 	public class Wormsket : ModItem
 	{

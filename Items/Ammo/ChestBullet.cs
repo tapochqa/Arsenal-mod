@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExampleMod.Items.Weapons
+namespace ArsenalMod.Items.Ammo
 {
 	public class ChestBullet : ModItem
 	{
@@ -40,7 +40,6 @@ namespace ExampleMod.Items.Weapons
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.MusketBall, 50);
-			recipe.AddTile(null, "ExampleWorkbench");
 			recipe.SetResult(this, 50);
 			recipe.AddRecipe();
 		}
