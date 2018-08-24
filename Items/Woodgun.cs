@@ -17,15 +17,15 @@ namespace ArsenalMod.Items
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
-			item.useTime = 5;
-			item.useAnimation = 5;
+			item.useTime = 35;
+			item.useAnimation = 35;
 			item.useStyle = 5;
-			item.knockBack = 3;
+			item.knockBack = 0;
 			item.value = 10000;
 			item.rare = 2;
 			item.UseSound = SoundID.Item11;
 			item.shoot = 10; 
-			item.shootSpeed = 16f;
+			item.shootSpeed = 1f;
 			item.useAmmo = AmmoID.Bullet;
 			item.autoReuse = true;
 		}
