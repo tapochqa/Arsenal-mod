@@ -10,5 +10,13 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 		{
 			DisplayName.SetDefault("Frozen chest gun");
 		}
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.LihzahrdChest, 2);
+			recipe.AddIngredient(ItemID.FrozenChest);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
     }
 }

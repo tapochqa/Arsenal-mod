@@ -29,6 +29,14 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 			item.useAmmo = mod.ItemType("ChestBullet");
 			item.autoReuse = false;
 		}
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.LihzahrdChest, 2);
+			recipe.AddIngredient(ItemID.JungleChest);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(0, 0);
