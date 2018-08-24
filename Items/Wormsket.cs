@@ -29,15 +29,7 @@ namespace ArsenalMod.Items
 			item.useAmmo = AmmoID.Bullet;
 			item.autoReuse = false;
 		}
-
-		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
-	public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			int numberProjectiles = 2 + Main.rand.Next(2);
 			for (int i = 0; i < numberProjectiles; i++)
@@ -50,9 +42,25 @@ namespace ArsenalMod.Items
 			}
 			return false; // return false because we don't want tmodloader to shoot projectile
 		}
-			public override Vector2? HoldoutOffset()
+		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(0, 0);
+		}
+	}
+	class MyGlobalNPC : GlobalNPC
+	{
+		public override void NPCLoot(NPC npc)
+		{
+			if(npc.type == NPCID.DiggerHead)
+			{
+				if (Main.rand.NextFloat() < .1212f)
+	   	    		Item.NewItem(npc.getRect(), mod.ItemType("Wormsket"));
+			}
+			if(npc.type == NPCID.GiantWormHead)
+			{
+				if (Main.rand.NextFloat() < .0500f)
+	   	    		Item.NewItem(npc.getRect(), mod.ItemType("Wormsket"));
+			}
 		}
 	}
 }
