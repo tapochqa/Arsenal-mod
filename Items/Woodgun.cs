@@ -33,7 +33,8 @@ namespace ArsenalMod.Items
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DirtBlock, 1);
+			recipe.AddIngredient(ItemID.Wood, 15);
+			recipe.AddIngredient(ItemID.CopperBar, 5);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
