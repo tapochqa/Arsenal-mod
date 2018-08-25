@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace ArsenalMod.Items.Ammo
 {
-	public class ChestBullet : ModItem
+	public class SkullBullet : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
