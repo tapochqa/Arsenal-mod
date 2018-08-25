@@ -25,7 +25,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 			item.rare = 3;
 			item.UseSound = SoundID.Item36;
 			item.shoot = mod.ProjectileType("ChestBullet");
-			item.shootSpeed = 2f;
+			//item.shootSpeed = 2f;
 			item.useAmmo = mod.ItemType("ChestBullet");
 			item.autoReuse = false;
 		}
