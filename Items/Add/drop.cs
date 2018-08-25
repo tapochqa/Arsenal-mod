@@ -26,7 +26,7 @@ namespace ArsenalMod.Items.Add
 				if(npc.type == NPCID.Zombie)
 	    		{
 	    			if (Main.rand.NextFloat() < .3333f)
-	       	    		Item.NewItem(npc.getRect(), mod.ItemType("PiceOfFlesh"), Main.rand.Next(2, 5));
+	       	    		Item.NewItem(npc.getRect(), mod.ItemType("PieceOfFlesh"), Main.rand.Next(2, 5));
 	    		}
 	    	}
 	    }
