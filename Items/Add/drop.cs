@@ -18,6 +18,11 @@ namespace ArsenalMod.Items.Add
 	    			if (Main.rand.NextFloat() < .0500f)
 	       	    		Item.NewItem(npc.getRect(), mod.ItemType("Wormsket"));
 	    		}
+	    		if(npc.type == NPCID.Nymph)
+	    		{
+	    			if (Main.rand.NextFloat() < .5000f)
+	       	    		Item.NewItem(npc.getRect(), mod.ItemType("NymphsHead"));
+	    		}
 	    	}
 	    }
 }
