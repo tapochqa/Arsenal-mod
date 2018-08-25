@@ -34,6 +34,13 @@ namespace ArsenalMod.Projectiles
 			projectile.extraUpdates = 0;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			aiType = ProjectileID.Bullet;      
 		}
+		public override void Kill(int timeLeft)
+		{
+			if (projectile.owner == Main.myPlayer)
+			{
+				int item = Item.NewItem((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height, mod.ItemType("SkullBullet"));
+
+		}}
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			//Redraw the projectile with the color not influenced by light
