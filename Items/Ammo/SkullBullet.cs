@@ -23,7 +23,7 @@ namespace ArsenalMod.Items.Ammo
 			item.value = 10;
 			item.rare = 2;
 			item.shoot = mod.ProjectileType("SkullBullet");   //The projectile shoot when your weapon using this ammo
-			item.shootSpeed = 1f;                  //The speed of the projectile
+			item.shootSpeed = 10f;                  //The speed of the projectile
 			item.ammo = item.type;              //The ammo class this ammo belongs to.
 		}
 
