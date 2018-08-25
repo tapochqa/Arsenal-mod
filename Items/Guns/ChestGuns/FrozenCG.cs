@@ -15,6 +15,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LihzahrdChest, 2);
 			recipe.AddIngredient(ItemID.FrozenChest);
+			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
