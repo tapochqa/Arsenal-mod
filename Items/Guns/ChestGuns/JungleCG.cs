@@ -13,7 +13,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 		}
         public override void SetDefaults()
 		{
-			item.damage = 40;
+			item.damage = 120;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 			item.useStyle = 5;
 			item.knockBack = 8;
 			item.value = 10000;
-			item.rare = 4;
+			item.rare = 3;
 			item.UseSound = SoundID.Item36;
 			item.shoot = mod.ProjectileType("ChestBullet");
 			item.shootSpeed = 2f;
