@@ -13,12 +13,12 @@ namespace ArsenalMod.Items.Guns
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 1;
+			item.damage = 60;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
-			item.useTime = 35;
-			item.useAnimation = 35;
+			item.useTime = 60;
+			item.useAnimation = 60;
 			item.useStyle = 5;
 			item.knockBack = 5;
 			item.value = 10000;
