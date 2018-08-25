@@ -19,8 +19,8 @@ namespace ArsenalMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;               //The width of projectile hitbox
-			projectile.height = 16;              //The height of projectile hitbox
+			projectile.width = 42;               //The width of projectile hitbox
+			projectile.height = 24;              //The height of projectile hitbox
 			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
 			projectile.friendly = true;         //Can the projectile deal damage to enemies?
 			projectile.hostile = false;         //Can the projectile deal damage to the player?

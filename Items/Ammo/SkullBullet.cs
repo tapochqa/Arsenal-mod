@@ -8,21 +8,21 @@ namespace ArsenalMod.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Chest bullet");
+			Tooltip.SetDefault("Skull Bullet");
 		}
 
 		public override void SetDefaults()
 		{
 			item.damage = 12;
 			item.ranged = true;
-			item.width = 14;
-			item.height = 16;
+			item.width = 42;
+			item.height = 24;
 			item.maxStack = 999;
 			item.consumable = true;             //You need to set the item consumable so that the ammo would automatically consumed
 			item.knockBack = 1.5f;
 			item.value = 10;
 			item.rare = 2;
-			item.shoot = mod.ProjectileType("ChestBullet");   //The projectile shoot when your weapon using this ammo
+			item.shoot = mod.ProjectileType("SkullBullet");   //The projectile shoot when your weapon using this ammo
 			item.shootSpeed = 10f;                  //The speed of the projectile
 			item.ammo = item.type;              //The ammo class this ammo belongs to.
 		}
