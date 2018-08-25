@@ -24,9 +24,9 @@ namespace ArsenalMod.Items.Guns
 			item.value = 10000;
 			item.rare = 1;
 			item.UseSound = SoundID.Item11;
-			item.shoot = 10; 
+			item.shoot = mod.ProjectileType("TestExplosive");
 			item.shootSpeed = 1f;
-			item.useAmmo = AmmoID.Bullet;
+			item.useAmmo = mod.ItemType("TestExplosive");
 			item.autoReuse = true;
 		}
 		public override void AddRecipes()
