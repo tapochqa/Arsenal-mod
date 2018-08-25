@@ -13,7 +13,7 @@ namespace ArsenalMod.Items.Guns
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 5;
+			item.damage = 25;
 			item.ranged = true;
 			item.width = 47;
 			item.height = 29;
@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns
 			item.useStyle = 5;
 			item.knockBack = 1;
 			item.value = 10000;
-			item.rare = 2;
+			item.rare = 4;
 			item.UseSound = SoundID.Item18;
 			item.shoot = 10;
 			item.shootSpeed = 16f;
