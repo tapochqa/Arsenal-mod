@@ -4,12 +4,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace ArsenalMod.Items.Guns
 {
-	public class Skullgun : ModItem
+	public class Corpsegun : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Skullgun");
-			Tooltip.SetDefault(" ");
+			DisplayName.SetDefault("Corpse gun");
+			Tooltip.SetDefault("What it shoots?!");
 		}
 		public override void SetDefaults()
 		{

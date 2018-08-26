@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wood gun");
-			Tooltip.SetDefault("A piece of log turned into a gun");
+			Tooltip.SetDefault("A piece of log turned into a gun.");
 		}
 		public override void SetDefaults()
 		{

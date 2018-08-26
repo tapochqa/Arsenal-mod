@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Seedthrower");
-			Tooltip.SetDefault("One caught a nymph and made this");
+			Tooltip.SetDefault("One caught a nymph and made this.");
 		}
 		public override void SetDefaults()
 		{
