@@ -8,7 +8,7 @@ namespace ArsenalMod.Items.Ammo
 	{
 		public override void SetStaticDefaults()
 		{
-			Tooltip.SetDefault("Skull Bullet");
+			Tooltip.SetDefault("Corpse");
 		}
 
 		public override void SetDefaults()
@@ -39,8 +39,8 @@ namespace ArsenalMod.Items.Ammo
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MusketBall, 50);
-			recipe.SetResult(this, 50);
+			recipe.AddIngredient(mod.ItemType("PieceOfFlesh"), 20);
+			recipe.SetResult(this, 1);
 			recipe.AddRecipe();
 		}
 	}
