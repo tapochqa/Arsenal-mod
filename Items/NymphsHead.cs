@@ -15,14 +15,9 @@ namespace ArsenalMod.Items
 		{
 			item.width = 20;
 			item.height = 24;
-			item.useTime = 50;
-			item.useAnimation = 50;
-			item.useStyle = 5;
-			item.knockBack = 0;
+			item.maxStack = 1;
 			item.value = 10000;
 			item.rare = 3;
-			item.shoot = 10;
-			item.autoReuse = false;
 		}
 	}
 }

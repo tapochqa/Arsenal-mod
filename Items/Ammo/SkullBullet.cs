@@ -9,6 +9,7 @@ namespace ArsenalMod.Items.Ammo
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Skull Bullet");
+			Tooltip.SetDefault("Warning! Still bites!");
 		}
 
 		public override void SetDefaults()
