@@ -2,13 +2,13 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-namespace ArsenalMod.Items.Guns
+namespace ArsenalMod.Items.Guns.EvolutionGun
 {
 	public class Woodgun : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wood gun");
+			DisplayName.SetDefault("Wood gun2");
 			Tooltip.SetDefault("A piece of log turned into a gun.");
 		}
 		public override void SetDefaults()
@@ -33,7 +33,7 @@ namespace ArsenalMod.Items.Guns
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.Wood, 15);
+			recipe.AddIngredient(mod.ItemType("Woodgun"));
 			recipe.AddIngredient(ItemID.CopperBar, 5);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
