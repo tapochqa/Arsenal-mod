@@ -13,7 +13,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 15;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
@@ -34,7 +34,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Woodgun"));
-			recipe.AddIngredient(ItemID.CopperBar, 5);
+			recipe.AddIngredient(ItemID.DemoniteBar, 20);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
