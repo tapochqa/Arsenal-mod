@@ -13,12 +13,12 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 15;
+			item.damage = 20;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
-			item.useTime = 30;
-			item.useAnimation = 30;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 5;
 			item.knockBack = 0;
 			item.value = 10000;
