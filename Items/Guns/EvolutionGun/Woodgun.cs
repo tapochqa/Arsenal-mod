@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 			item.useStyle = 5;
 			item.knockBack = 0;
 			item.value = 10000;
-			item.rare = 1;
+			item.rare = 0;
 			item.UseSound = SoundID.Item11;
 			item.shoot = 10; 
 			item.shootSpeed = 1f;

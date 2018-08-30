@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns
 			item.useStyle = 5;
 			item.knockBack = 5;
 			item.value = 10000;
-			item.rare = 1;
+			item.rare = 3;
 			item.UseSound = SoundID.Item11;
 			item.shoot = mod.ProjectileType("SkullBullet");
 			item.shootSpeed = 1f;

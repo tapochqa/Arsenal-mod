@@ -17,7 +17,7 @@ namespace ArsenalMod.Items
 			item.height = 24;
 			item.maxStack = 1;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = 1;
 		}
 	}
 }

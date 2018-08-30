@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 			item.useStyle = 5;
 			item.knockBack = 8;
 			item.value = 10000;
-			item.rare = 3;
+			item.rare = 7;
 			item.UseSound = SoundID.Item36;
 			item.shoot = mod.ProjectileType("ChestBullet");
 			//item.shootSpeed = 2f;

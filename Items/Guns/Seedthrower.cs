@@ -22,7 +22,7 @@ namespace ArsenalMod.Items.Guns
 			item.useStyle = 5;
 			item.knockBack = 1;
 			item.value = 10000;
-			item.rare = 4;
+			item.rare = 1;
 			item.UseSound = SoundID.Item18;
 			item.shoot = 10;
 			item.shootSpeed = 16f;
