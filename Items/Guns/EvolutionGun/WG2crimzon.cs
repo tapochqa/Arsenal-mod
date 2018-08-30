@@ -25,7 +25,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 			item.rare = 1;
 			item.UseSound = SoundID.Item11;
 			item.shoot = 10; 
-			item.shootSpeed = 1f;
+			item.shootSpeed = 16f;
 			item.useAmmo = AmmoID.Bullet;
 			item.autoReuse = true;
 		}
@@ -34,7 +34,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("Woodgun"));
-			// recipe.AddIngredient(ItemID.??, 20);
+			recipe.AddIngredient(ItemID.CrimtaneBar, 20);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

@@ -30,8 +30,9 @@ namespace ArsenalMod.Items.Ammo
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.MusketBall, 50);
-			recipe.SetResult(this, 50);
+			recipe.AddIngredient(ItemID.Grenade, 1);
+			recipe.AddIngredient(ItemID.Chest, 1);
+			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 	}
