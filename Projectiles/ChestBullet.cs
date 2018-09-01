@@ -25,7 +25,7 @@ namespace ArsenalMod.Projectiles
 			projectile.friendly = true;         //Can the projectile deal damage to enemies?
 			projectile.hostile = false;         //Can the projectile deal damage to the player?
 			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
-			projectile.penetrate = 5;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+			//projectile.penetrate = 5;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
 			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
 			projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
 			projectile.light = 0.5f;            //How much light emit around the projectile
@@ -33,35 +33,42 @@ namespace ArsenalMod.Projectiles
 			projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
 			aiType = ProjectileID.Bullet;           //Act exactly like default Bullet
+			drawOffsetX = 5;
+			drawOriginOffsetY = 5;
 		}
 
 
+ public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            ChestBullet.OnHitCollide(projectile);
+        }
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            ChestBullet.OnHitCollide(projectile);
+        }
+        public override void OnHitPvp(Player target, int damage, bool crit)
+        {
+            ChestBullet.OnHitCollide(projectile);
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            ChestBullet.OnHitCollide(projectile, true); return false;
+        }
 
+public const int explosionTimeLeft = 3;
 
-
+         public static void OnHitCollide(Projectile projectile, bool tile = false)
+        {
+            if (tile) projectile.velocity = Vector2.Zero;
+            projectile.timeLeft = explosionTimeLeft;
+        }
 
 		public override void AI()
 		{
-			if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
-			{
-				projectile.tileCollide = false;
-				// Set to transparent. This projectile technically lives as  transparent for about 3 frames
-				projectile.alpha = 255;
-				// change the hitbox size, centered about the original projectile center. This makes the projectile damage enemies during the explosion.
-				projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-				projectile.width = 250;
-				projectile.height = 250;
-				projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
-				projectile.damage = 250;
-				projectile.knockBack = 10f;
-			}
-
 			projectile.ai[0] += 1f;
 			if (projectile.ai[0] > 5f)
 			{
-				projectile.ai[0] = 10f;
+				//projectile.ai[0] = 10f;
 				// Roll speed dampening.
 				if (projectile.velocity.Y == 0f && projectile.velocity.X != 0f)
 				{
@@ -86,82 +93,90 @@ namespace ArsenalMod.Projectiles
 			public override void Kill(int timeLeft)
 		{
 
-			// Play explosion sound
-			Main.PlaySound(SoundID.Item15, projectile.position);
-			// Smoke Dust spawn
-			for (int i = 0; i < 50; i++)
-			{
-				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 2f);
-				Main.dust[dustIndex].velocity *= 1.4f;
-			}
-			// Fire Dust spawn
-			for (int i = 0; i < 80; i++)
-			{
-				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 3f);
-				Main.dust[dustIndex].noGravity = true;
-				Main.dust[dustIndex].velocity *= 5f;
-				dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
-				Main.dust[dustIndex].velocity *= 3f;
-			}
-			// Large Smoke Gore spawn
-			for (int g = 0; g < 2; g++)
-			{
-				int goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[goreIndex].scale = 1.5f;
-				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[goreIndex].scale = 1.5f;
-				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y + 1.5f;
-				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[goreIndex].scale = 1.5f;
-				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X + 1.5f;
-				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-				goreIndex = Gore.NewGore(new Vector2(projectile.position.X + (float)(projectile.width / 2) - 24f, projectile.position.Y + (float)(projectile.height / 2) - 24f), default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[goreIndex].scale = 1.5f;
-				Main.gore[goreIndex].velocity.X = Main.gore[goreIndex].velocity.X - 1.5f;
-				Main.gore[goreIndex].velocity.Y = Main.gore[goreIndex].velocity.Y - 1.5f;
-			}
-			// reset size to normal width and height.
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-			projectile.width = 10;
-			projectile.height = 10;
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+		  int explodeSize = 120;
+            if (projectile.timeLeft <= explosionTimeLeft)
+            {
+                if (projectile.aiStyle != 16) projectile.damage /= 2;
+                projectile.aiStyle = 16; //explosion damage player
 
-			// TODO, tmodloader helper method
-			{
-				int explosionRadius = 3;
-				//if (projectile.type == 29 || projectile.type == 470 || projectile.type == 637)
-				{
-					explosionRadius = 7;
-				}
-				int minTileX = (int)(projectile.position.X / 16f - (float)explosionRadius);
-				int maxTileX = (int)(projectile.position.X / 16f + (float)explosionRadius);
-				int minTileY = (int)(projectile.position.Y / 16f - (float)explosionRadius);
-				int maxTileY = (int)(projectile.position.Y / 16f + (float)explosionRadius);
-				if (minTileX < 0)
-				{
-					minTileX = 0;
-				}
-				if (maxTileX > Main.maxTilesX)
-				{
-					maxTileX = Main.maxTilesX;
-				}
-				if (minTileY < 0)
-				{
-					minTileY = 0;
-				}
-				if (maxTileY > Main.maxTilesY)
-				{
-					maxTileY = Main.maxTilesY;
-				}
-				bool canKillWalls = false;
-				bool canKillTile = false;
+                projectile.tileCollide = false;
+                projectile.ai[1] = 0f;
+                projectile.alpha = 255;
+
+                projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+                projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+                projectile.width = explodeSize;
+                projectile.height = explodeSize;
+                projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
+                projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+                projectile.knockBack = 8f;}
+
+
 				
-			}
+                projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
+                projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+                projectile.width = 22;
+                projectile.height = 22;
+                projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
+                projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+                int num9;
+                for (int num616 = 0; num616 < 30; num616 = num9 + 1)
+                {
+                    int num617 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 1.5f);
+                    Dust dust = Main.dust[num617];
+                    dust.velocity *= 1.4f;
+                    num9 = num616;
+                }
+                for (int num618 = 0; num618 < 20; num618 = num9 + 1)
+                {
+                    int num619 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 3.5f);
+                    Main.dust[num619].noGravity = true;
+                    Dust dust = Main.dust[num619];
+                    dust.velocity *= 7f;
+                    num619 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.5f);
+                    dust = Main.dust[num619];
+                    dust.velocity *= 3f;
+                    num9 = num618;
+                }
+                for (int num620 = 0; num620 < 2; num620 = num9 + 1)
+                {
+                    float scaleFactor9 = 0.4f;
+                    if (num620 == 1)
+                    {
+                        scaleFactor9 = 0.8f;
+                    }
+                    int num621 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    Gore gore = Main.gore[num621];
+                    gore.velocity *= scaleFactor9;
+                    Gore gore98 = Main.gore[num621];
+                    gore98.velocity.X = gore98.velocity.X + 1f;
+                    Gore gore99 = Main.gore[num621];
+                    gore99.velocity.Y = gore99.velocity.Y + 1f;
+                    num621 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    gore = Main.gore[num621];
+                    gore.velocity *= scaleFactor9;
+                    Gore gore100 = Main.gore[num621];
+                    gore100.velocity.X = gore100.velocity.X - 1f;
+                    Gore gore101 = Main.gore[num621];
+                    gore101.velocity.Y = gore101.velocity.Y + 1f;
+                    num621 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    gore = Main.gore[num621];
+                    gore.velocity *= scaleFactor9;
+                    Gore gore102 = Main.gore[num621];
+                    gore102.velocity.X = gore102.velocity.X + 1f;
+                    Gore gore103 = Main.gore[num621];
+                    gore103.velocity.Y = gore103.velocity.Y - 1f;
+                    num621 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+                    gore = Main.gore[num621];
+                    gore.velocity *= scaleFactor9;
+                    Gore gore104 = Main.gore[num621];
+                    gore104.velocity.X = gore104.velocity.X - 1f;
+                    Gore gore105 = Main.gore[num621];
+                    gore105.velocity.Y = gore105.velocity.Y - 1f;
+                    num9 = num620;
+                
+            }
+          
 		}
 
 

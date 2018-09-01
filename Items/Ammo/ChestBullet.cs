@@ -14,7 +14,7 @@ namespace ArsenalMod.Items.Ammo
 
 		public override void SetDefaults()
 		{
-			item.damage = 12;
+			item.damage = 0;
 			item.ranged = true;
 			item.width = 14;
 			item.height = 16;

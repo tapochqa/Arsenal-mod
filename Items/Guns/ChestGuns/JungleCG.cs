@@ -13,7 +13,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
 		}
         public override void SetDefaults()
 		{
-			item.damage = 120;
+			item.damage = 0;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
