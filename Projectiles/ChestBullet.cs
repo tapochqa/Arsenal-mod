@@ -103,7 +103,7 @@ namespace ArsenalMod.Projectiles
          private static void aiExplode(Projectile projectile)
         {
             int explodeSize = 200;
-            projectile.damage = 100;
+            //projectile.damage = 100;
             if (projectile.timeLeft <= explosionTimeLeft)
             {
                 if (projectile.aiStyle != 16) projectile.damage /= 2;
