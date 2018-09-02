@@ -1,4 +1,4 @@
 author = m0x3mkx, NABIRIY
-version = 0.1.1
+version = 0.1.2
 displayName = Arsenal mod
 homepage = https://github.com/tapochqa/Arsenal-mod
