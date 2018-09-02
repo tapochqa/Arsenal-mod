@@ -13,7 +13,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 5;
+			item.damage = 1;
 			item.ranged = true;
 			item.width = 70;
 			item.height = 30;
