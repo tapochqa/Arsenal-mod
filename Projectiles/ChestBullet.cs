@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Chat;
 using Terraria.ID;
+using Terraria.GameContent.NetModules;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ArsenalMod.Projectiles
@@ -21,24 +24,27 @@ namespace ArsenalMod.Projectiles
 		{
 			projectile.width = 14;               //The width of projectile hitbox
 			projectile.height = 16;              //The height of projectile hitbox
-			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
+			projectile.aiStyle = -1;             //The ai style of the projectile, please reference the source code of Terraria
 			projectile.friendly = true;         //Can the projectile deal damage to enemies?
-			projectile.hostile = false;         //Can the projectile deal damage to the player?
+			//projectile.hostile = false;         //Can the projectile deal damage to the player?
 			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
-			//projectile.penetrate = 5;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
+			projectile.penetrate = -1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
+			//projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
+			//projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
 			projectile.light = 0.5f;            //How much light emit around the projectile
-			projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
-			projectile.tileCollide = true;          //Can the projectile collide with tiles?
+			//projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
+			//projectile.tileCollide = true;          //Can the projectile collide with tiles?
 			projectile.extraUpdates = 1;            //Set to above 0 if you want the projectile to update multiple time in a frame
-			aiType = ProjectileID.Bullet;           //Act exactly like default Bullet
-			drawOffsetX = 5;
-			drawOriginOffsetY = 5;
+			//aiType = ProjectileID.Bullet;           //Act exactly like default Bullet
+			//drawOffsetX = 5;
+			//drawOriginOffsetY = 5;
 		}
 
-
- public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void Kill(int timeLeft)
+        {
+            ChestBullet.aiKill(projectile, false, 0);
+        }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             ChestBullet.OnHitCollide(projectile);
         }
@@ -55,13 +61,16 @@ namespace ArsenalMod.Projectiles
             ChestBullet.OnHitCollide(projectile, true); return false;
         }
 
-public const int explosionTimeLeft = 3;
+        public const int explosionTimeLeft = 3;
 
          public static void OnHitCollide(Projectile projectile, bool tile = false)
         {
             if (tile) projectile.velocity = Vector2.Zero;
             projectile.timeLeft = explosionTimeLeft;
         }
+
+
+    
 
 		public override void AI()
 		{
@@ -80,20 +89,21 @@ public const int explosionTimeLeft = 3;
 					if ((double)projectile.velocity.X > -0.01 && (double)projectile.velocity.X < 0.01)
 					{
 						projectile.velocity.X = 0f;
-						projectile.netUpdate = true;
+						//projectile.netUpdate = true;
 					}
 				}
 				projectile.velocity.Y = projectile.velocity.Y + 0.2f;
 			}
 			// Rotation increased by velocity.X 
 			projectile.rotation += projectile.velocity.X * 0.1f;
-			return;
+			ChestBullet.rocketAI(projectile, 90);
+            return;
 		}
 
-			public override void Kill(int timeLeft)
-		{
-
-		  int explodeSize = 120;
+         private static void aiExplode(Projectile projectile)
+        {
+            int explodeSize = 200;
+            projectile.damage = 100;
             if (projectile.timeLeft <= explosionTimeLeft)
             {
                 if (projectile.aiStyle != 16) projectile.damage /= 2;
@@ -109,10 +119,14 @@ public const int explosionTimeLeft = 3;
                 projectile.height = explodeSize;
                 projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
                 projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
-                projectile.knockBack = 8f;}
+                projectile.knockBack = 8f;
+            }
+        }
 
-
-				
+        private static void explosionFX(Projectile projectile)
+        {
+           
+            
                 projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
                 projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
                 projectile.width = 22;
@@ -174,10 +188,28 @@ public const int explosionTimeLeft = 3;
                     Gore gore105 = Main.gore[num621];
                     gore105.velocity.Y = gore105.velocity.Y - 1f;
                     num9 = num620;
-                
-            }
+                }
+            
           
-		}
+        }
+
+        public static void aiKill(Projectile projectile, bool largeExplode = false, int tileExplode = 0)
+        {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+
+            explosionFX(projectile);
+        }
+
+        public static void rocketAI(Projectile projectile, int dustType, bool largeExplode = false)
+        {
+            if (projectile.ai[0] == 3) Main.PlaySound(2, projectile.Center, 89);
+
+            //aiDust(projectile, dustType);
+            aiExplode(projectile);
+
+        }
+    
+			//public override void Kill(int timeLeft) {}
 
 
 
