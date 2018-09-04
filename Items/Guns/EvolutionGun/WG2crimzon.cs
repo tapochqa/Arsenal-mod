@@ -8,7 +8,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Bloody dick");
+			DisplayName.SetDefault("Bloody stick");
 			Tooltip.SetDefault("LVL2");
 		}
 		public override void SetDefaults()
