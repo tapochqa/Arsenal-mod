@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Ammo
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Chest bullet");
-			Tooltip.SetDefault("Always wanted to shoot chests.");
+			Tooltip.SetDefault("A chest with some explosives inside. Ammo for chest gun.");
 		}
 
 		public override void SetDefaults()

@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Ammo
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault("Corpse");
-			Tooltip.SetDefault("Warning! Still bites!");
+			Tooltip.SetDefault("Remade of pieces");
 		}
 
 		public override void SetDefaults()

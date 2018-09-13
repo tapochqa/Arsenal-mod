@@ -8,7 +8,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Wood gun");
+			DisplayName.SetDefault("Wooden gun");
 			Tooltip.SetDefault("A piece of log turned into a gun.");
 		}
 		public override void SetDefaults()

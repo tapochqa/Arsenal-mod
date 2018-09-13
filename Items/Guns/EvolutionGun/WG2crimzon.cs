@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bloody stick");
-			Tooltip.SetDefault("LVL2");
+			Tooltip.SetDefault("Bullet-filled, blood-thirsty.");
 		}
 		public override void SetDefaults()
 		{

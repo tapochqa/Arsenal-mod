@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns.EvolutionGun
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Shadow punisher");
-			Tooltip.SetDefault("LVL2");
+			Tooltip.SetDefault("Dark, cool and murderous.");
 		}
 		public override void SetDefaults()
 		{
