@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Corpse gun");
-			Tooltip.SetDefault("What it shoots?!");
+			Tooltip.SetDefault("Cold steel, hard obsidian and zombies, tied and prepared");
 		}
 		public override void SetDefaults()
 		{

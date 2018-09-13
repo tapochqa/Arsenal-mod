@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Wormsket");
-			Tooltip.SetDefault("What did you do with this worm??");
+			Tooltip.SetDefault("What did you do with this worm?");
 		}
 		public override void SetDefaults()
 		{

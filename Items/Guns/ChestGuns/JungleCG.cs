@@ -9,7 +9,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Jungle chest gun");
-			Tooltip.SetDefault("Chestgun seriously???");
+			Tooltip.SetDefault("A gun made of chests shooting chests.");
 		}
         public override void SetDefaults()
 		{

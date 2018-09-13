@@ -9,7 +9,7 @@ namespace ArsenalMod.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nymph's head");
-			Tooltip.SetDefault("Disgusting");
+			Tooltip.SetDefault("Disgusting!");
 		}
 		public override void SetDefaults()
 		{

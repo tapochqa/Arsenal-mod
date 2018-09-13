@@ -9,6 +9,7 @@ namespace ArsenalMod.Items.Guns.ChestGuns
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Corruption chest gun");
+			Tooltip.SetDefault("A gun made of chests shooting chests.");
 		}
 		public override void AddRecipes()
 		{

@@ -9,7 +9,7 @@ namespace ArsenalMod.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Piece Of Flesh");
-			Tooltip.SetDefault("Ooops something fell off of him.");
+			Tooltip.SetDefault("A piece of slayed zombie.");
 		}
 		public override void SetDefaults()
 		{
